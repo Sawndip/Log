@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-	<appender name="DicomServer" class="org.apache.log4j.rolling.RollingFileAppender">
+	<appender name="SPO2" class="org.apache.log4j.rolling.RollingFileAppender">
 		<param name="Threshold" value="ALL" />
-		<param name="File" value="${ProgramData}/Mediso/Log/DicomServer-DicomServer1.log" />
+		<param name="File" value="${ProgramData}/SPO2/Log/SPO2.log" />
 		<param name="encoding" value="UTF-8" />
 
 		<rollingPolicy class="org.apache.log4j.rolling.FixedWindowRollingPolicy">
-			<param name="FileNamePattern" value="${ProgramData}/Mediso/Log/DicomServer-DicomServer1-%i.log" />
+			<param name="FileNamePattern" value="${ProgramData}/SPO2/Log/SPO2-%i.log" />
 			<param name="MaxIndex" value="12" />
 		</rollingPolicy>
 
@@ -18,26 +18,7 @@
 			<param name="ConversionPattern" value="%d{ISO8601} %-6p [%X{user}][%X{session}] %m%n"/>
 		</layout>
 	</appender>
-	<appender name="DicomServerAudit" class="org.apache.log4j.rolling.RollingFileAppender">
-		<param name="Threshold" value="ALL" />
-		<param name="File" value="${ProgramData}/Mediso/Log/DicomServerAudit-DicomServer1.log" />
-		<param name="encoding" value="UTF-8" />
-
-		<rollingPolicy class="org.apache.log4j.rolling.FixedWindowRollingPolicy">
-			<param name="FileNamePattern" value="${ProgramData}/Mediso/Log/DicomServerAudit-DicomServer1-%i.log" />
-			<param name="MaxIndex" value="12" />
-		</rollingPolicy>
-
-		<triggeringPolicy class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
-			<param name="MaxFileSize" value="10MB" />
-		</triggeringPolicy>
-
-		<layout class="org.apache.log4j.PatternLayout">
-			<!-- <param name="ConversionPattern" value="%d{ISO8601} %-6p [%X{user}][%X{session}] %m%n"/>-->
-			<param name="ConversionPattern" value="&lt;LR&gt;%n\t&lt;TS&gt;%d{yyyy-MM-dd HH:mm:ss.SSS}&lt;/TS&gt;%n\t&lt;LEVEL&gt;%p&lt;/LEVEL&gt;%n\t&lt;TYPE&gt;%X{type}&lt;/TYPE&gt;%n\t&lt;SOURCE&gt;%X{component}&lt;/SOURCE&gt;%n\t&lt;FILE&gt;%F&lt;/FILE&gt;%n\t&lt;LINE&gt;%L&lt;/LINE&gt;%n\t&lt;METHOD&gt;%M&lt;/METHOD&gt;%n\t&lt;HOST&gt;&lt;/HOST&gt;%n\t&lt;THREAD&gt;%t&lt;/THREAD&gt;%n\t&lt;APPLICATION&gt;&lt;/APPLICATION&gt;%n\t&lt;SESSION&gt;%X{session}&lt;/SESSION&gt;%n\t&lt;USER&gt;%X{user}&lt;/USER&gt;%n\t&lt;MSG&gt;%m&lt;/MSG&gt;%n&lt;/LR&gt;%n"/>
-		</layout>
-	</appender>
-
+	
 	<appender name="VisualStudioConsole" class="org.apache.log4j.OutputDebugStringAppender">
 		<param name="Threshold" value="ALL" />
 		<layout class="org.apache.log4j.PatternLayout">
@@ -54,14 +35,8 @@
 
 	<root>
 		<priority value="ALL" />
-		<appender-ref ref="DicomServer"/>
+		<appender-ref ref="SPO2"/>
 		<appender-ref ref="VisualStudioConsole"/>
 		<appender-ref ref="ConsoleAppender"/>
 	</root>
-
-	<!-- Specify the level for some specific categories -->
-	<category name="audit" >
-		<priority value ="ALL" />
-		<appender-ref ref="DicomServerAudit"/>
-	</category>
 </log4j:configuration>
