@@ -26,5 +26,8 @@
 
 namespace Log
 {
-Log_API void    configure( const std::string& aXmlFileName );
+Log_API void configure( const char* aXmlFileName );
+Log_API bool createLogFolder( const wchar_t* aSoftwareName, wchar_t* aError );
+
+bool getLogFolder( const std::wstring& aSoftwareName, std::wstring& aLogFolder, wchar_t* aError );
 };
